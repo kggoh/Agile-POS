@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication1
 {
+     
     public partial class POS : Form
     {
+        Order o = new Order();
         public POS()
         {
             InitializeComponent();
@@ -24,9 +27,9 @@ namespace WindowsFormsApplication1
 
 
 
-            comboBox1.Items.Add("10% company make little money");
-            comboBox1.Items.Add("20% company loss");
-            comboBox1.Items.Add("30% company bankrupt");
+            comboBox1.Items.Add("Multi-Item");
+            comboBox1.Items.Add("Progressive Discount");
+      
 
 
             comboBox2.Items.Add("1");
@@ -39,6 +42,40 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             listBox2.Items.Add(listBox1.SelectedItem.ToString() + " x " + comboBox2.SelectedItem.ToString());
+            o.Add(Products.GetProduct(listBox1.SelectedItem.ToString()), Convert.ToInt16(comboBox2.SelectedItem.ToString()));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Promotion promo;
+            DiscountCalculator dc;
+
+            if(comboBox1.SelectedItem.Equals("Multi-Item"))
+            {
+                promo = new Promotion("multi", 0.30, Convert.ToInt16(comboBox2.SelectedItem.ToString()));
+                dc = new DiscountCalculator(promo);
+        
+
+                
+               //.Add(Products.GetProduct(listBox1.SelectedItem.ToString()), Convert.ToInt16(comboBox2.SelectedItem.ToString()));
+
+                //exercise
+                Order newOrder = dc.CalculateDiscount(o);
+                label5.Text = "$" + newOrder.DiscountedPrice;
+
+            }
+            else
+            {
+                promo = new Promotion("progressive", 0.10, Convert.ToInt16(comboBox2.SelectedItem.ToString()));
+                dc = new DiscountCalculator(promo);
+             // Order o = new Order();
+              //o.Add(Products.GetProduct(listBox1.SelectedItem.ToString()), Convert.ToInt16(comboBox2.SelectedItem.ToString()));
+
+                //exercise
+                Order newOrder = dc.CalculateDiscount(o);
+                label5.Text = "$" + newOrder.DiscountedPrice;
+            }
+
         }
 
     }

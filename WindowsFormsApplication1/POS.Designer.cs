@@ -118,6 +118,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Calculate Order";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -133,9 +134,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(366, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(13, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "$20.00";
+            this.label5.Text = "0";
             // 
             // POS
             // 

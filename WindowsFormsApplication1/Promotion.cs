@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WindowsFormsApplication1
+{
+    public class Promotion
+    {
+        public double Discount { get; set; }
+        public string Name { get; set; }
+        public int EveryRepeatedItem { get; set; }
+
+        public Promotion()
+        {
+            Name = "";
+            EveryRepeatedItem = 0;
+            Discount = 0;
+        }
+
+        public Promotion(string name, double discount, int everyRepeatedItem)
+        {
+            Discount = discount;
+            Name = name;
+            EveryRepeatedItem = everyRepeatedItem;
+        }
+    }
+}

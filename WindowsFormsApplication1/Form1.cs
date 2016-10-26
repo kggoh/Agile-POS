@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text.Equals("superman") && txtPassword.Text.Equals("12345678"))
+            if (txtUsername.Text.Equals("1") && txtPassword.Text.Equals("1"))
             {
                 POS frm = new POS();
                 frm.Show();
